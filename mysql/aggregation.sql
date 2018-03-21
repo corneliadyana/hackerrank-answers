@@ -35,3 +35,47 @@ FROM STATION;
 SELECT ROUND(SUM(LAT_N), 4)
 FROM STATION
 WHERE LAT_N > 38.7880 AND LAT_N<137.2345;
+
+/* weather observation station 14 */
+SELECT ROUND(MAX(LAT_N), 4)
+FROM STATION
+WHERE LAT_N<137.2345;
+/* weather observation station 15 */
+SELECT ROUND(LONG_W, 4)
+FROM STATION
+WHERE LAT_N = 
+(SELECT MAX(LAT_N) 
+ FROM STATION 
+ WHERE LAT_N < 137.2345);
+
+/* weather observation station 16 */
+SELECT ROUND(MIN(LAT_N), 4)
+FROM STATION 
+WHERE LAT_N > 38.7780
+
+/* weather observation station 17 */
+SELECT ROUND(LONG_W, 4)
+FROM STATION 
+WHERE LAT_N =
+(SELECT MIN(LAT_N)
+FROM STATION
+WHERE LAT_N > 38.7780);
+
+/* weather observation station 18 */
+SELECT ROUND(ABS(MIN(LAT_N) - MAX(LAT_N)) + ABS(MIN(LONG_W) - MAX(LONG_W)),4) 
+FROM STATION
+
+/* weather observation station 19 */
+SELECT ROUND(
+            SQRT(POWER(MIN(LAT_N)-MAX(LAT_N),2) + POWER(MIN(LONG_W)-MAX(LONG_W),2)), 4
+            )
+FROM STATION
+
+/* weather observation station 20 */
+SELECT ROUND(S.LAT_N, 4) MEDIAN
+FROM STATION S 
+WHERE (SELECT COUNT(LAT_N)
+      FROM STATION
+      WHERE LAT_N < S.LAT_N) = (SELECT COUNT(LAT_N)
+                               FROM STATION
+                               WHERE LAT_N > S.LAT_N)
