@@ -1,4 +1,4 @@
-/* not completed */
+/* answers to advanced select in mysql, not yet completed */
 
 /* type of triangle */
 SELECT 
