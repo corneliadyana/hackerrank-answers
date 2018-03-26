@@ -1,4 +1,4 @@
-/* answers to basic select in mysql, all completed */
+/* answers to basic select in mysql, all completed (finished on March 3rd)*/
 
 /* revising the select query 1*/
 SELECT * FROM CITY WHERE POPULATION > 100000 AND COUNTRYCODE = 'USA'
