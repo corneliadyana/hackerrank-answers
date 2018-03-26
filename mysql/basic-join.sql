@@ -34,3 +34,9 @@ JOIN HACKERS HACC ON J.HACKER_ID = HACC.HACKER_ID
 GROUP BY HACC.HACKER_ID, HACC.NAME
 HAVING SUM(SCORE) > 0
 ORDER BY SUM(SCORE) DESC, HACC.HACKER_ID
+
+/* top competitors */
+
+/* olliviander's inventory */
+
+/* challenges */
