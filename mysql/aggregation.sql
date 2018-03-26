@@ -1,4 +1,4 @@
-/* answers to aggregation in mysql, all completed */
+/* answers to aggregation in mysql, all completed (finished on March 15th) */
 
 /* revising aggregations - the count function */
 SELECT COUNT(*) FROM CITY WHERE POPULATION > 100000
