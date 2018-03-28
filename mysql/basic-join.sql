@@ -56,3 +56,18 @@ WHERE P.IS_EVIL = 0 AND W.COINS_NEEDED =
 ORDER BY W.POWER DESC, P.AGE DESC
 
 /* challenges */
+SELECT HACC.HACKER_ID,HACC.NAME,TMP.CNT FROM HACKERS HACC
+LEFT JOIN
+    (SELECT COUNT(*) AS CNT ,HACKER_ID FROM CHALLENGES GROUP BY(HACKER_ID))
+    TMP ON HACC.HACKER_ID=TMP.HACKER_ID
+WHERE TMP.CNT IN (SELECT CNT 
+                  FROM  (SELECT COUNT(*) AS TIMES,CNT 
+                         FROM
+                            (SELECT COUNT(*) AS CNT,HACKER_ID FROM CHALLENGES 
+                             GROUP BY HACKER_ID)TMP 
+                             GROUP BY CNT 
+                             HAVING(TIMES=1)) TMP) OR TMP.CNT IN (SELECT MAX(CNT) AS CNT 
+                                                                  FROM (SELECT COUNT(*) AS CNT,HACKER_ID 
+                                                                        FROM CHALLENGES 
+                                                                        GROUP BY HACKER_ID)TMP) 
+                                                                    ORDER BY TMP.CNT DESC,HACC.HACKER_ID;
